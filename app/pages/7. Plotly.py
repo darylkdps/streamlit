@@ -51,7 +51,7 @@ trace1 = go.Histogram(x=df['cos_similarity'],
 
 fig1 = go.Figure(data=[trace1])
 
-fig1.update_layout(xaxis_range=[-1, 1],
+fig1.update_layout(xaxis_range=[-0.5, 1],
                   xaxis_dtick=0.05,
                   template='plotly_dark',
                   width=800,
