@@ -139,7 +139,8 @@ with fig3_container:
 
 
 ##########
-df1 = df.groupby(['weightage']).apply(lambda row : round(sum(row['content_word_count'] * row['weightage']), 2))
+# df1 = df.groupby(['weightage']).apply(lambda row : round(sum(row['content_word_count'] * row['weightage']), 2))  # wrong calculation, should be a count
+df1 = df.groupby(['weightage']).apply(lambda row : sum(row['content_word_count']))
 df1 = df1.drop(labels=[0.00])
 df1.index = list(map(str, df1.index))
 
