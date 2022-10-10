@@ -60,7 +60,7 @@ fig1.update_layout(xaxis_range=[-0.5, 1],
 
 st.text('Distribution of Cosine Similarities')
 
-but_bin = st.radio('Binning:', (0.01, 0.1), horizontal=True)
+but_bin = st.radio('Binning: (lower bound >= value < upper bound)', (0.01, 0.1), horizontal=True)
 fig1.update_traces(xbins=dict(start=-0.5, end=1, size=but_bin))
 
 if but_bin == 0.01:
