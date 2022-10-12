@@ -40,7 +40,7 @@ The Strategic Planning unit assists the NIE leadership in overseeing the formula
 The unit is also the Secretariat for the meetings of the NIE Council and its Executive Committee, the Director’s Strategic Review and Development Meeting (DSM), the MOE-NIE Coordination Committee (MNCC) and the MOE-NIE Working Group (MNWG). 
 
 The Academic Quality unit takes the lead in helping to promote a culture of continuous self-improvement and the adoption of best practices for NIE academic programmes. Through the gathering of evidence-based feedback from various stakeholders, trend analysis and academic reviews, SPAQ provides deep insight and analysis to aid programmatic and pedagogical enhancements.
-''', height=500)
+''', height=400)
 
 hits = extract_entities(ent_pos_types, text)
 st.write(hits)
