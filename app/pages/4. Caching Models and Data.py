@@ -31,27 +31,15 @@ def extract_entities(ent_pos_types, text):
 st.sidebar.header('Named Entity Recognition and Part of Speech')
 ent_pos_types = st.sidebar.multiselect('Select the named entities or part of speech you want to extract', ['PERSON', 'ORG', 'GPE', 'NOUN', 'PROPN', 'VERB'])
 
-text = st.text_area('Sample Text', '''The National Institute of Education (NIE), Singapore, is Singapore’s national teacher education institute and we are proud to be an integral part of the nation’s education service. We play a key role in the preparation of teachers and in the provision of teacher professional and school leadership development programmes. 
- 
-Our university-based teacher education programmes leverage the strong partnerships that NIE has with the Ministry of Education and Singapore schools to develop teachers who are grounded in theory and strong in practice. As an institute within a world-class research university, NIE also offers rigorous graduate education in the form of masters and doctoral programmes for local and international students. 
- 
-NIE faculty are actively involved in research in their respective academic disciplines. Our education research strengthens the research-practice nexus continually, and advances theory and policy thinking. NIE also supports our nation’s life-long learning endeavours through courses in relevant professional and life skills. 
-  
-I thank you for your interest in NIE and warmly welcome you to find out more about our people and our work. 
- 
-Professor Christine Goh
-----------
-Extracted from NIE's web page by Daryl Ku.
+text = st.text_area('Sample Text', '''The Strategic Planning and Academic Quality (SPAQ) office was established on 15 March 2014 after a re-organisation to incorporate the key functions of strategic planning and academic quality management into a single office. It aims to tap on the synergies and linkages between strategic planning and evidence-informed academic quality enhancement efforts to aid institute-wide planning, decision-making and quality assurance. Please click here to view SPAQ’s Framework and click here to view SPAQ's function.
 
-His boss is:
-Associate Professor David Ng Foo Seong
-Associate Dean (Academic Quality, Office of Academic & Strategic Development)
-Associate Professor, (Policy, Curriculum and Leadership)
+Each of the functions under SPAQ is led by a head of department that reports directly to the Dean, Academic and Strategic Development. The Strategic Planning Unit is headed by Ms Wong Su Ling and the Academic Quality Unit is headed by Associate Professor David Ng Foo Seong.
 
-His grandboss is:
-Professor Chang Chew Hung
-Dean, Academic and Strategic Development
-Professor, Humanities & Social Studies Education 
+The Strategic Planning unit assists the NIE leadership in overseeing the formulation, implementation and communication of the Institute’s medium term strategic plan. The current NIE Strategic Vision 2022: "A Future-Ready National Institute of Education" outlines NIE's key strategic direction and institute-level goals for the next few years. 
+
+The unit is also the Secretariat for the meetings of the NIE Council and its Executive Committee, the Director’s Strategic Review and Development Meeting (DSM), the MOE-NIE Coordination Committee (MNCC) and the MOE-NIE Working Group (MNWG). 
+
+The Academic Quality unit takes the lead in helping to promote a culture of continuous self-improvement and the adoption of best practices for NIE academic programmes. Through the gathering of evidence-based feedback from various stakeholders, trend analysis and academic reviews, SPAQ provides deep insight and analysis to aid programmatic and pedagogical enhancements.
 ''', height=500)
 
 hits = extract_entities(ent_pos_types, text)
