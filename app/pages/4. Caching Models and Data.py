@@ -48,7 +48,7 @@ st.write(hits)
 doc = nlp(text)
 st.markdown(spacy.displacy.render(doc, style='ent', options={'ents': ['PERSON', 'ORG', 'GPE']}, jupyter=False), unsafe_allow_html=True)
 
-st.markdown(spacy.displacy.render(list(doc.sents)[3].as_doc(), style='dep', options={'add_lemma': True, 'compact': False}, jupyter=False), unsafe_allow_html=True)
+st.markdown(spacy.displacy.render(list(doc.sents)[1].as_doc(), style='dep', options={'add_lemma': True, 'compact': False}, jupyter=False), unsafe_allow_html=True)
 
 
 ## Lesson 4 Ends
