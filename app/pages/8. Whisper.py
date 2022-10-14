@@ -10,6 +10,7 @@ from PIL import Image
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 import time
+import os
 
 
 st.title('Audio Transcription and Translation')
@@ -75,9 +76,7 @@ def load_model(model_size=model_size):
 # finally:
 #     tempFile.close()
 
-
-
-audio = st.file_uploader('Upload an audio file', type=['mp3', 'aac', 'wav'])
+audio = st.file_uploader('Upload an audio file', type=['mp3', 'wav'])
 if audio is not None:
     ext = Path(audio.name).suffix
     st.write('extension type: ' + ext)
@@ -87,6 +86,7 @@ if audio is not None:
         tempFile.seek(0)
         st.text(tempFile.name)
         st.audio(tempFile.read(), format='audio/' + ext)
+        tempFile.seek(0)
 
         # time.sleep(30)
 
