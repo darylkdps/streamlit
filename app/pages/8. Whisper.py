@@ -77,7 +77,7 @@ match performance:
 
 
 
-
+audio = st.file_uploader('Upload an audio file', type=['wav'])
 if audio is not None:
     ext = Path(audio.name).suffix
     ext
