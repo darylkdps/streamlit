@@ -78,7 +78,7 @@ def load_model(model_size=model_size):
 
 audio = st.file_uploader('Upload an audio file', type=['mp3', 'wav'])
 if audio is not None:
-    ext = Path(audio.name).suffix
+    ext = Path(audio.name).suffix[1:]
     st.write('extension type: ' + ext)
 
     with NamedTemporaryFile(suffix=ext) as tempFile:
