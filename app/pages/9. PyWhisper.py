@@ -85,7 +85,7 @@ if audio is not None:
             
             text = segment['text']
             segmentId = segment['id'] + 1
-            segment = f"{segmentId}\n{startTime} --> {endTime}\n{text[1:] if text[0] == ' ' else text}\n"
+            segment = f"{segmentId}\n{startTime} --> {endTime}\n{text[1:] if text[0] == ' ' else text}\n\n"
             tmpText = tmpText + '\n' + segment
         
         st.write(tmpText)
