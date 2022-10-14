@@ -52,22 +52,39 @@ def load_model(model_size=model_size):
 # audio = st.file_uploader('Upload an audio file', type=['mp3', 'aac', 'wav'])
 audio = st.file_uploader('Upload an audio file', type=['aac'])
 
+tempFile = NamedTemporaryFile()
+try:
+    tempFile.write(audio.getvalue())
+    tempFile.seek(0)
 
-if audio is not None:
-    ext = Path(audio.name).suffix
-    ext
+    # audio_bytes = uploaded_file.read()
+    st.audio(audio.getvalue(), format='audio/aac')
 
-    with NamedTemporaryFile(suffix='aac') as tempFile:
-        tempFile.write(audio.getvalue())
-        tempFile.seek(0)
-        st.text(tempFile.name)
+    f = 'D:\Script\Christine DA 2020 (3 min).aac'
+    model = whisper.load_model('base')
+    result = model.transcribe(audio=tempFile.name)
+    st.write(result["text"])
+finally:
+    tempFile.close()
 
-        # time.sleep(30)
 
-        # model = load_model()
-        model = whisper.load_model('base')
-        result = model.transcribe(audio=tempFile.name)
-        st.write(result["text"])
+
+
+# if audio is not None:
+#     ext = Path(audio.name).suffix
+#     ext
+
+#     with NamedTemporaryFile(suffix='aac') as tempFile:
+#         tempFile.write(audio.getvalue())
+#         tempFile.seek(0)
+#         st.text(tempFile.name)
+
+#         # time.sleep(30)
+
+#         # model = load_model()
+#         model = whisper.load_model('base')
+#         result = model.transcribe(audio=tempFile.name)
+#         st.write(result["text"])
 
 
 
