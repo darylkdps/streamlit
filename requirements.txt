@@ -14,3 +14,4 @@ tqdm==4.64.1
 wasabi==0.9.1
 ffmpeg==5.1.2
 git+https://github.com/openai/whisper.git
+setuptools-rust==1.5.2
