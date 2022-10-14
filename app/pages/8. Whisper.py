@@ -11,7 +11,9 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 import time
 
+
 st.title('Audio Transcription and Translation')
+
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 if DEVICE == 'cuda':
@@ -45,46 +47,52 @@ match performance:
     case _:
         model_size = 'tiny'
 
-@st.cache(allow_output_mutation=True)
-def load_model(model_size=model_size):
-    return whisper.load_model(model_size, device=DEVICE)
+# @st.cache(allow_output_mutation=True)
+# def load_model(model_size=model_size):
+#     return whisper.load_model(model_size, device=DEVICE)
 
-# audio = st.file_uploader('Upload an audio file', type=['mp3', 'aac', 'wav'])
-audio = st.file_uploader('Upload an audio file', type=['aac'])
+# # audio = st.file_uploader('Upload an audio file', type=['mp3', 'aac', 'wav'])
+# audio = st.file_uploader('Upload an audio file', type=['wav'])
 
-tempFile = NamedTemporaryFile()
-try:
-    tempFile.write(audio.getvalue())
-    tempFile.seek(0)
+# tempFile = NamedTemporaryFile(suffix='wav')
+# try:
+#     tempFile.write(audio.getvalue())
+#     tempFile.seek(0)
+#     tempFile.name
 
-    # audio_bytes = uploaded_file.read()
-    st.audio(audio.getvalue(), format='audio/aac')
-
-    f = 'D:\Script\Christine DA 2020 (3 min).aac'
-    model = whisper.load_model('base')
-    result = model.transcribe(audio=tempFile.name)
-    st.write(result["text"])
-finally:
-    tempFile.close()
+#     fs, x = ffmpegio.audio.read(tempFile.read())
 
 
+#     # audio_bytes = uploaded_file.read()
+#     # st.audio(audio.getvalue(), format='audio/aac')
+#     st.audio(tempFile.read(), format='audio/wav')
+#     tempFile.name
+
+#     f = 'D:\Script\Christine DA 2020 (3 min).aac'
+#     model = whisper.load_model('base')
+#     result = model.transcribe(audio=x)
+#     st.write(result["text"])
+# finally:
+#     tempFile.close()
 
 
-# if audio is not None:
-#     ext = Path(audio.name).suffix
-#     ext
 
-#     with NamedTemporaryFile(suffix='aac') as tempFile:
-#         tempFile.write(audio.getvalue())
-#         tempFile.seek(0)
-#         st.text(tempFile.name)
 
-#         # time.sleep(30)
+if audio is not None:
+    ext = Path(audio.name).suffix
+    ext
 
-#         # model = load_model()
-#         model = whisper.load_model('base')
-#         result = model.transcribe(audio=tempFile.name)
-#         st.write(result["text"])
+    with NamedTemporaryFile(suffix='aac') as tempFile:
+        tempFile.write(audio.getvalue())
+        tempFile.seek(0)
+        st.text(tempFile.name)
+
+        # time.sleep(30)
+
+        # model = load_model()
+        model = whisper.load_model('base')
+        result = model.transcribe(audio=tempFile.name)
+        st.write(result["text"])
 
 
 
