@@ -22,27 +22,28 @@ if DEVICE == 'cuda':
 else:
     st.text('Using CPU')
 
+performance_values = ('Very fast', 'Fast', 'Balanced but slow', 'Accurate but slower', 'Very Accurate and very very slow')
 
 performance = st.select_slider(
     'Select performance',
-    options=('Very Fast', 'Fast', 'Balanced', 'Accurate', 'Very Accurate'),
+    options=performance_values,
     value='Fast'
     )
 
 match performance:
-    case 'Very Fast':
+    case 'Very fast':
         model_size = 'tiny'
 
     case 'Fast':
         model_size = 'base'
 
-    case 'Balanced':
+    case 'Balanced but slow':
         model_size = 'small'
 
-    case 'Accurate':
+    case 'Accurate but slower':
         model_size = 'medium'
 
-    case 'Very Accurate':
+    case 'Very Accurate and very very slow':
         model_size = 'large'
 
     case _:
@@ -85,6 +86,6 @@ if audio is not None:
             text = segment['text']
             segmentId = segment['id'] + 1
             segment = f"{segmentId}\n{startTime} --> {endTime}\n{text[1:] if text[0] == ' ' else text}\n"
-            tmpText = '\n' + tmpText
+            tmpText = '\n' + segment
         
         st.write(tmpText)
