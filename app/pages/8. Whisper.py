@@ -47,9 +47,9 @@ match performance:
     case _:
         model_size = 'tiny'
 
-# @st.cache(allow_output_mutation=True)
-# def load_model(model_size=model_size):
-#     return whisper.load_model(model_size, device=DEVICE)
+@st.cache(allow_output_mutation=True)
+def load_model(model_size=model_size):
+    return whisper.load_model(model_size, device=DEVICE)
 
 # # audio = st.file_uploader('Upload an audio file', type=['mp3', 'aac', 'wav'])
 # audio = st.file_uploader('Upload an audio file', type=['wav'])
@@ -86,12 +86,13 @@ if audio is not None:
         tempFile.write(audio.getvalue())
         tempFile.seek(0)
         st.text(tempFile.name)
+        st.audio(tempFile.read(), format='audio/wav')
 
         # time.sleep(30)
 
-        # model = load_model()
-        model = whisper.load_model('base')
-        result = model.transcribe(audio=tempFile.name)
+        model = load_model()
+        # model = whisper.load_model('base')
+        result = model.transcribe(audio=tempFile.name, verbose=True)
         st.write(result["text"])
 
 
