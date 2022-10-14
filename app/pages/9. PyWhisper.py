@@ -9,6 +9,7 @@ import torch
 # from PIL import Image
 from pathlib import Path
 from tempfile import NamedTemporaryFile
+from datetime import timedelta
 # import time
 # import os
 
@@ -73,3 +74,17 @@ if audio is not None:
         model = pywhisper.load_model(model_size, device=DEVICE)
         result = model.transcribe(audio=tempFile.name, verbose=True)
         st.write(result["text"])
+        st.write('Timestamped version:\n')
+
+        tmpText = ''
+
+        for segment in result['segments']:
+            startTime = str(0) + str(timedelta(seconds=int(segment['start']))) + ',000'
+            endTime = str(0) + str(timedelta(seconds=int(segment['end']))) + ',000'
+            
+            text = segment['text']
+            segmentId = segment['id'] + 1
+            segment = f"{segmentId}\n{startTime} --> {endTime}\n{text[1:] if text[0] == ' ' else text}\n"
+            tmpText = '\n' + tmpText
+        
+        st.write(tmpText)
