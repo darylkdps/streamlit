@@ -1,18 +1,9 @@
-# Run this using:
-# streamlit run "streamlit tutorial.py"
-
 import streamlit as st
 import pywhisper
 import torch
-# import numpy as np
-# from datetime import timedelta
-# from PIL import Image
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from datetime import timedelta
-# import time
-# import os
-
 
 st.title('Audio Transcription and Translation PyWhisper')
 
