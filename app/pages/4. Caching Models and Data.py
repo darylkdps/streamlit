@@ -29,7 +29,7 @@ def extract_entities(ent_pos_types, text):
     return results
 
 st.sidebar.header('Named Entity Recognition and Part of Speech')
-ent_pos_types = st.sidebar.multiselect('Select the named entities or part of speech you want to extract', ['PERSON', 'ORG', 'GPE', 'NOUN', 'PROPN', 'VERB'])
+ent_pos_types = st.sidebar.multiselect('Select the named entities or part of speech you want to extract', ['PERSON', 'ORG', 'GPE', 'ADJ', 'ADV', 'INTJ', 'NOUN', 'PROPN', 'VERB', 'ADP', 'AUX', 'CONJ', 'CCONJ', 'DET', 'NUM', 'PART', 'PRON', 'SCONJ'])
 
 text = st.text_area('Sample Text', '''The Strategic Planning and Academic Quality (SPAQ) office was established on 15 March 2014 after a re-organisation to incorporate the key functions of strategic planning and academic quality management into a single office. It aims to tap on the synergies and linkages between strategic planning and evidence-informed academic quality enhancement efforts to aid institute-wide planning, decision-making and quality assurance. Please click here to view SPAQ’s Framework and click here to view SPAQ's function.
 
