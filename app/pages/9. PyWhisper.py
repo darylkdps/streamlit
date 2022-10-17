@@ -66,7 +66,7 @@ if audio is not None:
         with st.spinner('Transcribing ...'):
 
             model = pywhisper.load_model(model_size, device=DEVICE)
-            result = model.transcribe(audio=tempFile.name, verbose=False)
+            result = model.transcribe(audio=tempFile.name, verbose=False, fp16=False)
         
         st.success('Done')
 
