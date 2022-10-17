@@ -45,7 +45,7 @@ if audio is not None:
         tempFile.write(audio.getvalue())
         tempFile.seek(0)
 
-        st.write('File name: ' + audio.name)        
+        st.write('File name: ' + audio.name)
         st.write('File extension: ' + ext)
 
         st.audio(tempFile.read(), format='audio/' + ext)
