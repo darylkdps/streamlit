@@ -4,7 +4,7 @@ from pathlib import Path
 def main():
     st.title('Home Page - Test of Streamlit Functionality')
 
-    if 'D:' in str(Path.cwd()):
+    if 'D:' in str(Path.cwd()) or 'C:' in str(Path.cwd()):
         st.markdown('_No token_')
     else:
         st.markdown('_' + st.secrets['test_token'] + '_')
